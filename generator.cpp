@@ -2,7 +2,6 @@
 #include <string>
 #include <string.h>
 #include <unordered_map>
-#include <vector>
 #include <filesystem>
 #include <fstream>
 
@@ -22,9 +21,9 @@ int main(int argc, char** argv) {
 
     std::unordered_map<std::string, long> sizes;
     sizes["test"] = 10;
-    sizes["SMALL"] = 12800000000;
-    sizes["MEDIUM"] = 25600000000;
-    sizes["LARGE"] = 51200000000;
+    sizes["SMALL"] = 128000000;
+    sizes["MEDIUM"] = 256000000;
+    sizes["LARGE"] = 512000000;
     if (sizes.find(argv[2]) == sizes.end()) {
         std::cout << argv[2] << " is not a valid size" << std::endl;
         return -1;
@@ -41,11 +40,12 @@ int main(int argc, char** argv) {
         return -1;
     }
 
-    std::ofstream outFile("output.bin", std::ios::binary);
+    std::string output = argv[4];
+    output.append("output.bin");
+    std::ofstream outFile(output, std::ios::binary);
     int n;
     for (long i = 0; i < sizes[argv[2]]; i++) {
         n = rand() % 100;
-        std::cout << n << std::endl;
         outFile.write(reinterpret_cast<const char*>(&n), sizeof(int));
     }
     outFile.close();
