@@ -3,11 +3,11 @@
 
 #include <queue>
 
-struct Node {
+struct TNode {
     int data;
-    Node* left;
-    Node* right;
-    Node(int value) {
+    TNode* left;
+    TNode* right;
+    TNode(int value) {
         data = value;
         left = right = nullptr;
     }
@@ -15,7 +15,7 @@ struct Node {
 
 class BST {
 private:
-    Node* root;
+    TNode* root;
 public:
     BST();
     void insert(int value);

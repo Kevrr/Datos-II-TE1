@@ -5,27 +5,27 @@ BST::BST() {
 }
 
 void BST::insert(int value) {
-    Node* newNode = new Node(value);
+    TNode* newNode = new TNode(value);
     if(!this -> root) {
         this -> root = newNode;
         return;
     }
     
-    std::queue<Node*> q;
+    std::queue<TNode*> q;
     q.push(this -> root);
 
     while (!q.empty()) {
-        Node* temp = q.front();
+        TNode* temp = q.front();
         q.pop();
 
         if (temp -> left == nullptr) {
-            temp -> left = new Node(value);
+            temp -> left = new TNode(value);
             break;
         } else {
             q.push(temp->left);
         }
         if (temp -> right == nullptr) {
-            temp -> right = new Node(value);
+            temp -> right = new TNode(value);
             break;
         } else {
             q.push(temp -> right);
