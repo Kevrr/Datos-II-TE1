@@ -1,0 +1,1 @@
+Compile main.cpp and run the resulting file
